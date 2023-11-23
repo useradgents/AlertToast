@@ -253,20 +253,17 @@ public struct AlertToast: View{
                     
                     Text(LocalizedStringKey(title ?? ""))
                         .font(style?.titleFont ?? Font.headline.bold())
+                        .lineLimit(3)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                
-                if subTitle != nil{
-                    Text(LocalizedStringKey(subTitle!))
-                        .font(style?.subTitleFont ?? Font.subheadline)
-                }
+                .multilineTextAlignment(.leading)
+                .textColor(style?.titleColor ?? nil)
+                .padding()
+                .frame(maxWidth: 400, alignment: .leading)
+                .alertBackground(style?.backgroundColor ?? nil)
+                .cornerRadius(10)
+                .padding([.horizontal, .bottom])
             }
-            .multilineTextAlignment(.leading)
-            .textColor(style?.titleColor ?? nil)
-            .padding()
-            .frame(maxWidth: 400, alignment: .leading)
-            .alertBackground(style?.backgroundColor ?? nil)
-            .cornerRadius(10)
-            .padding([.horizontal, .bottom])
         }
     }
     
@@ -315,6 +312,7 @@ public struct AlertToast: View{
                     }
                 }
             }
+            .fixedSize(horizontal: true, vertical: false)
             .padding(.horizontal, 24)
             .padding(.vertical, 8)
             .frame(minHeight: 50)
